@@ -253,6 +253,7 @@ footer {
 
 
 
+
 /* ==========================================================================
    MIAMI CROUSTY - NÉON MARQUEE BAND (Bandeau Défilant)
    ========================================================================== */
@@ -426,6 +427,9 @@ footer {
     background: #ff007f;
     color: #fff;
 }
+
+
+
 
 /* Variantes de couleurs Néon */
 .neon-pink { border-bottom: 4px solid #ff007f; box-shadow: 0 5px 15px rgba(255, 0, 127, 0.2); }
