@@ -1,0 +1,437 @@
+/* ==========================================================================
+   MIAMI CROUSTY - FULL RESPONSIVE & NEON VIBES - V2 (Corrected Images & Paths)
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+
+/* --- Variables de Couleurs Miami --- */
+:root {
+    --miami-pink: #ff007f;
+    --miami-blue: #00d4ff;
+    --miami-dark: #0b0e11;
+    --miami-card: rgba(20, 24, 28, 0.95);
+    --text-color: #f1f1f1;
+}
+
+/* --- Base & Reset --- */
+* { box-sizing: border-box; }
+
+body {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    background: var(--miami-dark);
+    margin: 0;
+    overflow-x: hidden; /* Empêche le défilement horizontal sur mobile */
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    font-family: 'Luckiest Guy', cursive;
+    letter-spacing: 2px;
+    width: 100%;
+    margin-top: 0;
+}
+
+/* --- Images Responsives --- */
+img { 
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+/* --- Animation Néon --- */
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 0 0 10px #fff, 0 0 20px var(--miami-pink), 0 0 40px var(--miami-pink);
+    }
+    20%, 22%, 24%, 55% { text-shadow: none; }
+}
+
+/* --- Header & Navigation --- */
+header {
+    /* Chemin d'image corrigé, ajustement pour responsive */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/header_bg_miami.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 80vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav.navbar.bootsnav {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border-bottom: 2px solid var(--miami-pink);
+    width: 100%;
+}
+
+.logo { width: clamp(100px, 15vw, 160px); } /* Taille fluide du logo */
+
+
+.banner {
+    text-align: center;
+    /* On augmente la marge en haut pour que le texte ne soit pas caché par le menu fixe */
+    margin-top: 150px !important; 
+    width: 100%;
+}
+
+.banner h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(14px, 4vw, 22px); /* Taille adaptative */
+    color: var(--miami-blue); /* Bleu Miami pour bien trancher */
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.banner h1 {
+    font-size: clamp(35px, 9vw, 80px); /* Taille fluide du titre */
+    color: #fff;
+    animation: neon-flicker 3s infinite alternate;
+    margin-bottom: 20px;
+}
+
+.banner_content {
+    background: rgba(0, 0, 0, 0.75);
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid var(--miami-pink);
+    max-width: 600px;
+    margin: 0 auto;
+    backdrop-filter: blur(8px);
+    line-height: 20px;
+}
+
+/* --- Grille de Sections (Responsive) --- */
+/* On utilise une grid pour aligner Burgers, Riz Crousty et Plats Indiens */
+.section-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature, .signature, .classic {
+    /* Propriétés pour que les nouvelles images de fond s'adaptent */
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 20px;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.feature:hover { transform: translateY(-10px); border-color: var(--miami-pink); }
+.signature:hover { transform: translateY(-10px); border-color: var(--miami-blue); }
+
+/* Titres de sections en Blanc + Glow rose (ex: Burgers) */
+.feature h2, .signature h2 {
+    color: #fff !important;
+    text-shadow: 2px 2px 0px var(--miami-pink);
+    font-size: 36px !important;
+}
+
+/* Badges de prix/texte (comme le rond sur tes flyers) */
+.price-badge {
+    background: var(--miami-pink);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 0 10px var(--miami-pink);
+}
+
+/* --- Boutons (Glow effect) --- */
+.info_btn {
+    background: var(--miami-pink);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.info_btn:hover {
+    background: var(--miami-blue);
+    box-shadow: 0 0 20px var(--miami-blue);
+    transform: scale(1.05);
+}
+
+/* --- Menus (Classic section) --- */
+.classic .overlay {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    width: 100%;
+    color: #fff;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.classic_btn {
+    background: #000;
+    color: var(--miami-blue);
+    border: 2px solid var(--miami-blue);
+    font-size: 20px;
+    padding: 8px 15px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+/* --- Carousel --- */
+#carousel .carousel-indicators > li.active {
+    background: var(--miami-pink);
+}
+
+/* --- Footer --- */
+footer {
+    background: #050505;
+    padding: 50px 20px;
+    border-top: 3px solid var(--miami-pink);
+    text-align: center;
+}
+
+.social {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social .fa {
+    color: var(--miami-pink);
+    font-size: 24px;
+    border: 2px solid var(--miami-pink);
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social .fa:hover {
+    background: var(--miami-pink);
+    color: #fff;
+    box-shadow: 0 0 15px var(--miami-pink);
+}
+
+/* --- Media Queries --- */
+
+/* Tablettes */
+@media (max-width: 991px) {
+    .section-container { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+    .section-container { grid-template-columns: 1fr; }
+    header { min-height: 60vh; }
+    .banner h1 { font-size: clamp(35px, 8vw, 50px); }
+}
+
+
+
+/* ==========================================================================
+   MIAMI CROUSTY - NÉON MARQUEE BAND (Bandeau Défilant)
+   ========================================================================== */
+
+/* Structure du bandeau (similaire à l'exemple Tailwind mais en CSS pur) */
+.miami-marquee-wrapper {
+    position: relative;
+    z-index: 20;
+    margin-top: -30px; /* Légère remontée pour l'effet de chevauchement */
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+
+.miami-marquee-content {
+    background-color: #ff007f; /* Rose Néon Miami (var(--miami-pink)) */
+    padding: 15px 0;
+    transform: rotate(-1deg); /* Légère inclinaison */
+    box-shadow: 0 10px 30px rgba(255, 0, 127, 0.4);
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 4px solid #b30059; /* Bordure rose foncé */
+    border-bottom: 4px solid #b30059;
+}
+
+/* Texte défilant */
+.miami-marquee-text {
+    display: inline-block;
+    animation: miami-marquee 30s linear infinite; /* Animation fluide */
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.95;
+    text-shadow: 0 0 10px #fff, 0 0 20px var(--miami-pink);
+}
+
+.miami-marquee-text span {
+    padding-right: 50px; /* Espace entre les répétitions */
+}
+
+/* L'animation CSS pour le défilement infini */
+@keyframes miami-marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); } /* On défile de la moitié de la longueur totale */
+}
+
+/* Adaptations Responsives */
+@media (max-width: 767px) {
+    .miami-marquee-text {
+        font-size: 18px;
+        letter-spacing: 0.1em;
+    }
+    .miami-marquee-content {
+        padding: 10px 0;
+        margin-top: -15px;
+    }
+}
+
+
+/* --- Amélioration Section Spot Leguevin --- */
+.miami-spot-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                url('../images/spot_bg.png') no-repeat center center fixed;
+    background-size: cover;
+    padding: 100px 0;
+    border-top: 2px solid var(--miami-blue);
+    border-bottom: 2px solid var(--miami-pink);
+    color: white;
+}
+
+.lock-content h2 {
+    font-size: clamp(28px, 5vw, 50px);
+    margin-bottom: 20px;
+}
+
+.neon-text-blue {
+    color: #fff;
+    text-shadow: 0 0 10px var(--miami-blue), 0 0 20px var(--miami-blue);
+}
+
+.lock-content .divider {
+    width: 80px;
+    height: 4px;
+    background: var(--miami-pink);
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+.lock-content p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.spot-badges {
+    margin-bottom: 30px;
+}
+
+.spot-badges span {
+    display: inline-block;
+    margin: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--miami-pink);
+}
+
+.btn-review {
+    background: transparent;
+    border: 2px solid #ffcc00; /* Jaune Google/Etoile */
+    color: #ffcc00;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-review:hover {
+    background: #ffcc00;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.6);
+}
+
+
+/* --- Unification des Cartes Menu --- */
+.food-card {
+    background: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.food-card:hover {
+    transform: translateY(-10px);
+}
+
+.food-img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.food-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.food-info h3 {
+    font-size: 22px;
+    margin-top: 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+.food-info p {
+    font-size: 14px;
+    color: #ccc;
+    height: 50px; /* Aligne la hauteur du texte */
+}
+
+.food-price {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    background: #ff007f;
+    color: #fff;
+}
+
+/* Variantes de couleurs Néon */
+.neon-pink { border-bottom: 4px solid #ff007f; box-shadow: 0 5px 15px rgba(255, 0, 127, 0.2); }
+.neon-blue { border-bottom: 4px solid #00f2ff; box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2); }
+.neon-blue .food-price { background: #00f2ff; color: #000; }
+/* Correction spécifique pour que les nouvelles images s'affichent */
+.feature { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/feature_bg_burgers.webp'); }
+.signature { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/sign_bg1.png'); }
+.classic { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/classic_bg1.webp'); }
