@@ -56,15 +56,18 @@
 
 <body data-spy="scroll" data-target="#navbar-menu" data-offset="100">
 
-    <div id="game-popup-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:99999; justify-content:center; align-items:center; backdrop-filter: blur(8px); padding: 20px;">
-        <div style="position:relative; width:100%; max-width:400px; height:650px; background:transparent;">
-            <button onclick="document.getElementById('game-popup-overlay').style.display='none'" 
-                    style="position:absolute; top:-10px; right:10px; z-index:100001; background:#ffcc00; color:#1a1a1a; border:none; border-radius:50%; width:35px; height:35px; cursor:pointer; font-size:20px; font-weight:bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display:flex; justify-content:center; align-items:center;">
+   <div id="game-popup-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:999999; justify-content:center; align-items:center; backdrop-filter: blur(8px); background: rgba(0,0,0,0.5); padding: 15px;">
+        <div style="position:relative; width:100%; max-width:400px; height:85vh; max-height:650px; border-radius: 20px;">
+            
+            <button onclick="closeGamePopup()" 
+                    style="position:absolute; top:-15px; right:-15px; z-index:100001; background:#e720cf; color:#ffffff; border:2px solid #fff; border-radius:50%; width:35px; height:35px; cursor:pointer; font-size:18px; font-weight:bold; display:flex; justify-content:center; align-items:center; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
               ✕
             </button>
+
             <iframe 
-                src="https://restaurantgame.netlify.app/?name=Miami%20Crousty&logo=https://3kitchenfood.com/images/logo-crousty.png&google=https://g.page/r/CRMuK3aVW99YEAE/review" 
-                style="width:100%; height:100%; border:none; background: transparent;" 
+                id="game-iframe-saas"
+                src="" 
+                style="width:100%; height:100%; border:none; border-radius:20px; background: transparent;" 
                 allowtransparency="true"
                 allow="clipboard-write">
             </iframe>
@@ -256,14 +259,60 @@
 <script src="js/bootsnav.js"></script>
 <script src="js/main.js"></script>
 <script src="https://www.fbgcdn.com/embedder/js/ewm2.js" defer async ></script>
+
+
 <script>
+    // --- CONFIGURATION DU RESTAURANT MIAMI CROUSTY ---
+    const saasConfig = {
+        name: "Miami Crousty",
+        logo: "https://3kitchenfood.com/images/logo-crousty.png",
+        google: "https://g.page/r/CRMuK3aVW99YEAE/review",
+        id_resto: "8" // Très important pour ton Supabase !
+    };
+
+    // Fonction pour ouvrir le jeu
     function openGamePopup() {
-        var popup = document.getElementById('game-popup-overlay');
-        if(popup) popup.style.display = 'flex';
+        const overlay = document.getElementById('game-popup-overlay');
+        const iframe = document.getElementById('game-iframe-saas');
+        
+        // On construit l'URL avec les paramètres 
+        const params = new URLSearchParams(saasConfig);
+        // iframe.src = `https://seriogame.netlify.app/?${params.toString()}`;
+        iframe.src = `https://sashimipinko.netlify.app/?${params.toString()}`;
+        
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Bloque le scroll du site
     }
+
+    // Fonction pour fermer proprement
+    function closeGamePopup() {
+        const overlay = document.getElementById('game-popup-overlay');
+        const iframe = document.getElementById('game-iframe-saas');
+        
+        overlay.style.display = 'none';
+        iframe.src = ''; // Stop le jeu et les sons
+        document.body.style.overflow = ''; // Réactive le scroll
+    }
+
+    // --- ECOUTEUR DE MESSAGES (Le secret du SaaS) ---
+    // Cette partie reçoit le signal "closeGame" envoyé par ton code Netlify
+    window.addEventListener('message', function(event) {
+        // Optionnel : vérifie que le message vient bien de ton Netlify
+        // if (event.origin !== "https://seriogame.netlify.app") return;
+
+        if (event.data === 'closeGame') {
+            console.log("Signal de fermeture reçu du SaaS");
+            closeGamePopup();
+        }
+    });
+
+    // --- LANCEMENT AUTOMATIQUE ---
+      // Lance le jeu après 5 secondes (meilleur pour la conversion)
     // document.addEventListener('DOMContentLoaded', function() {
-    //     setTimeout(openGamePopup, 3000);
+    
+    //     setTimeout(openGamePopup, 5000);
     // });
 </script>
+
 </body> 
 </html>
