@@ -313,6 +313,55 @@
     //     setTimeout(openGamePopup, 5000);
     // });
 </script>
+<style>
+    .whatsapp-widget {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+    .whatsapp-widget:hover {
+        transform: scale(1.1);
+    }
+    .wa-label {
+        background: #e720cf; /* Le rose de ton bouton "Jouez et Gagnez" */
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px 5px 5px 20px;
+        margin-right: -10px;
+        font-weight: bold;
+        font-family: sans-serif;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .wa-icon {
+        width: 60px;
+        height: 60px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        border: 2px solid #fff;
+    }
+    .wa-icon img {
+        width: 35px;
+        height: 35px;
+    }
+    @media (max-width: 768px) {
+        .wa-label { display: none; } /* On cache le texte sur mobile pour plus de place */
+    }
+</style>
 
+<a href="https://wa.me/33758262402?text=Bonjour%20Miami%20Crousty%20!%20Je%20souhaite%20commander." class="whatsapp-widget" target="_blank">
+    <div class="wa-label">Commander par WhatsApp</div>
+    <div class="wa-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </div>
+</a>
 </body> 
 </html>
