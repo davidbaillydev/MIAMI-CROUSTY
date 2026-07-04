@@ -23,7 +23,7 @@ body {
     color: var(--text-color);
     background: var(--miami-dark);
     margin: 0;
-    overflow-x: hidden; /* Empêche le défilement horizontal sur mobile */
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -51,7 +51,6 @@ img {
 
 /* --- Header & Navigation --- */
 header {
-    /* Chemin d'image corrigé, ajustement pour responsive */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/header_bg_miami.jpg') no-repeat center center;
     background-size: cover;
     min-height: 80vh;
@@ -67,12 +66,11 @@ nav.navbar.bootsnav {
     width: 100%;
 }
 
-.logo { width: clamp(100px, 15vw, 160px); } /* Taille fluide du logo */
+.logo { width: clamp(100px, 15vw, 160px); }
 
 
 .banner {
     text-align: center;
-    /* On augmente la marge en haut pour que le texte ne soit pas caché par le menu fixe */
     margin-top: 150px !important; 
     width: 100%;
 }
@@ -80,15 +78,15 @@ nav.navbar.bootsnav {
 .banner h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: clamp(14px, 4vw, 22px); /* Taille adaptative */
-    color: var(--miami-blue); /* Bleu Miami pour bien trancher */
+    font-size: clamp(14px, 4vw, 22px);
+    color: var(--miami-blue);
     text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
     margin-bottom: 10px;
     letter-spacing: 3px;
 }
 
 .banner h1 {
-    font-size: clamp(35px, 9vw, 80px); /* Taille fluide du titre */
+    font-size: clamp(35px, 9vw, 80px);
     color: #fff;
     animation: neon-flicker 3s infinite alternate;
     margin-bottom: 20px;
@@ -106,7 +104,6 @@ nav.navbar.bootsnav {
 }
 
 /* --- Grille de Sections (Responsive) --- */
-/* On utilise une grid pour aligner Burgers, Riz Crousty et Plats Indiens */
 .section-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -117,7 +114,6 @@ nav.navbar.bootsnav {
 }
 
 .feature, .signature, .classic {
-    /* Propriétés pour que les nouvelles images de fond s'adaptent */
     background-size: cover !important;
     background-position: center !important;
     border-radius: 20px;
@@ -136,14 +132,12 @@ nav.navbar.bootsnav {
 .feature:hover { transform: translateY(-10px); border-color: var(--miami-pink); }
 .signature:hover { transform: translateY(-10px); border-color: var(--miami-blue); }
 
-/* Titres de sections en Blanc + Glow rose (ex: Burgers) */
 .feature h2, .signature h2 {
     color: #fff !important;
     text-shadow: 2px 2px 0px var(--miami-pink);
     font-size: 36px !important;
 }
 
-/* Badges de prix/texte (comme le rond sur tes flyers) */
 .price-badge {
     background: var(--miami-pink);
     color: white;
@@ -237,51 +231,29 @@ footer {
     box-shadow: 0 0 15px var(--miami-pink);
 }
 
-/* --- Media Queries --- */
-
-/* Tablettes */
-@media (max-width: 991px) {
-    .section-container { grid-template-columns: 1fr 1fr; }
-}
-
-/* Mobiles */
-@media (max-width: 600px) {
-    .section-container { grid-template-columns: 1fr; }
-    header { min-height: 60vh; }
-    .banner h1 { font-size: clamp(35px, 8vw, 50px); }
-}
-
-
-
-
-/* ==========================================================================
-   MIAMI CROUSTY - NÉON MARQUEE BAND (Bandeau Défilant)
-   ========================================================================== */
-
-/* Structure du bandeau (similaire à l'exemple Tailwind mais en CSS pur) */
+/* --- Bandeau Défilant --- */
 .miami-marquee-wrapper {
     position: relative;
     z-index: 20;
-    margin-top: -30px; /* Légère remontée pour l'effet de chevauchement */
+    margin-top: -30px;
     padding-bottom: 50px;
     overflow: hidden;
 }
 
 .miami-marquee-content {
-    background-color: #ff007f; /* Rose Néon Miami (var(--miami-pink)) */
+    background-color: #ff007f;
     padding: 15px 0;
-    transform: rotate(-1deg); /* Légère inclinaison */
+    transform: rotate(-1deg);
     box-shadow: 0 10px 30px rgba(255, 0, 127, 0.4);
     overflow: hidden;
     white-space: nowrap;
-    border-top: 4px solid #b30059; /* Bordure rose foncé */
+    border-top: 4px solid #b30059;
     border-bottom: 4px solid #b30059;
 }
 
-/* Texte défilant */
 .miami-marquee-text {
     display: inline-block;
-    animation: miami-marquee 30s linear infinite; /* Animation fluide */
+    animation: miami-marquee 30s linear infinite;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -292,33 +264,16 @@ footer {
     text-shadow: 0 0 10px #fff, 0 0 20px var(--miami-pink);
 }
 
-.miami-marquee-text span {
-    padding-right: 50px; /* Espace entre les répétitions */
-}
+.miami-marquee-text span { padding-right: 50px; }
 
-/* L'animation CSS pour le défilement infini */
 @keyframes miami-marquee {
     0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); } /* On défile de la moitié de la longueur totale */
+    100% { transform: translateX(-50%); }
 }
-
-/* Adaptations Responsives */
-@media (max-width: 767px) {
-    .miami-marquee-text {
-        font-size: 18px;
-        letter-spacing: 0.1em;
-    }
-    .miami-marquee-content {
-        padding: 10px 0;
-        margin-top: -15px;
-    }
-}
-
 
 /* --- Amélioration Section Spot Leguevin --- */
 .miami-spot-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-                url('../images/spot_bg.png') no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/spot_bg.png') no-repeat center center fixed;
     background-size: cover;
     padding: 100px 0;
     border-top: 2px solid var(--miami-blue);
@@ -351,10 +306,7 @@ footer {
     line-height: 1.6;
 }
 
-.spot-badges {
-    margin-bottom: 30px;
-}
-
+.spot-badges { margin-bottom: 30px; }
 .spot-badges span {
     display: inline-block;
     margin: 10px 20px;
@@ -365,7 +317,7 @@ footer {
 
 .btn-review {
     background: transparent;
-    border: 2px solid #ffcc00; /* Jaune Google/Etoile */
+    border: 2px solid #ffcc00;
     color: #ffcc00;
     padding: 12px 25px;
     font-weight: bold;
@@ -379,7 +331,6 @@ footer {
     box-shadow: 0 0 20px rgba(255, 204, 0, 0.6);
 }
 
-
 /* --- Unification des Cartes Menu --- */
 .food-card {
     background: #1a1a1a;
@@ -390,33 +341,11 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.food-card:hover {
-    transform: translateY(-10px);
-}
-
-.food-img img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.food-info {
-    padding: 20px;
-    text-align: center;
-}
-
-.food-info h3 {
-    font-size: 22px;
-    margin-top: 0;
-    font-weight: bold;
-    color: #fff;
-}
-
-.food-info p {
-    font-size: 14px;
-    color: #ccc;
-    height: 50px; /* Aligne la hauteur du texte */
-}
+.food-card:hover { transform: translateY(-10px); }
+.food-img img { width: 100%; height: 200px; object-fit: cover; }
+.food-info { padding: 20px; text-align: center; }
+.food-info h3 { font-size: 22px; margin-top: 0; font-weight: bold; color: #fff; }
+.food-info p { font-size: 14px; color: #ccc; height: 50px; }
 
 .food-price {
     display: inline-block;
@@ -428,14 +357,105 @@ footer {
     color: #fff;
 }
 
-
-
-
-/* Variantes de couleurs Néon */
 .neon-pink { border-bottom: 4px solid #ff007f; box-shadow: 0 5px 15px rgba(255, 0, 127, 0.2); }
 .neon-blue { border-bottom: 4px solid #00f2ff; box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2); }
 .neon-blue .food-price { background: #00f2ff; color: #000; }
-/* Correction spécifique pour que les nouvelles images s'affichent */
+
 .feature { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/feature_bg_burgers.webp'); }
 .signature { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/sign_bg1.png'); }
 .classic { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/classic_bg1.webp'); }
+
+
+/* ==========================================================================
+   NÉANMOINS AJOUTS : COUPLAGE ET DESIGN DES NOUVEAUX MODULES (DISSOCIÉS)
+   ========================================================================== */
+
+/* Structure d'assombrissement floutée de l'overlay de démarrage */
+.miami-choice-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    z-index: 9999999; display: flex; justify-content: center; align-items: center; 
+    backdrop-filter: blur(12px); background: rgba(11, 14, 17, 0.96); padding: 20px;
+}
+
+.overlay-card { text-align: center; max-width: 500px; width: 100%; }
+.overlay-logo { max-width: 160px; margin: 0 auto 20px; width: auto; }
+
+.overlay-title {
+    font-family: 'Luckiest Guy', cursive; font-size: clamp(26px, 5vw, 42px);
+    color: #fff; text-shadow: 0 0 15px var(--miami-pink); margin-bottom: 8px;
+}
+
+.overlay-subtitle { font-size: 16px; color: #cccccc; margin-bottom: 25px; }
+.overlay-grid { display: flex; flex-direction: column; gap: 15px; }
+
+/* Boutons d'options géographiques */
+.btn-location {
+    color: white; border: none; padding: 16px; font-size: 20px; 
+    font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; border-radius: 12px; 
+    cursor: pointer; transition: all 0.3s ease; display: block; width: 100%;
+}
+
+.btn-leguevin { 
+    background: var(--miami-pink); 
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4); 
+}
+.btn-leguevin:hover { transform: scale(1.02); box-shadow: 0 0 25px var(--miami-pink); }
+
+.btn-aucamville { 
+    background: var(--miami-blue); color: #050505;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4); 
+}
+.btn-aucamville:hover { transform: scale(1.02); box-shadow: 0 0 25px var(--miami-blue); }
+
+.btn-location span { 
+    font-family: 'Montserrat', sans-serif; font-size: 12px; 
+    font-weight: normal; display: block; margin-top: 4px; opacity: 0.9; color: inherit;
+}
+
+/* Commutateur de navigation supérieur (Retour au Choix) */
+.local-switcher {
+    display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 0, 0, 0.6);
+    padding: 6px 14px; border-radius: 25px; border: 1px solid rgba(255, 0, 127, 0.3); margin-top: 8px;
+}
+.local-switcher a { color: #fff; font-size: 11px; text-decoration: underline; font-weight: bold; }
+.local-switcher a:hover { color: var(--miami-pink); text-shadow: 0 0 5px var(--miami-pink); }
+.local-switcher span { font-size: 11px; color: #bbb; }
+#nav-ville-active { color: var(--miami-blue); font-weight: bold; text-transform: uppercase; }
+
+/* Widget Flottant WhatsApp */
+.whatsapp-widget {
+    position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+    display: flex; align-items: center; text-decoration: none; transition: transform 0.3s ease;
+}
+.whatsapp-widget:hover { transform: scale(1.1); }
+
+.wa-label {
+    background: var(--miami-pink); color: white; padding: 8px 15px;
+    border-radius: 20px 5px 5px 20px; margin-right: -10px; font-weight: bold;
+    font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.wa-icon {
+    width: 60px; height: 60px; background: #25d366; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid #fff;
+}
+.wa-icon img { width: 35px; height: 35px; }
+
+
+/* --- Media Queries de Fin --- */
+@media (max-width: 991px) {
+    .section-container { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 767px) {
+    .miami-marquee-text { font-size: 18px; letter-spacing: 0.1em; }
+    .miami-marquee-content { padding: 10px 0; margin-top: -15px; }
+    .wa-label { display: none; } /* Masque le libellé texte sur mobile */
+}
+
+@media (max-width: 600px) {
+    .section-container { grid-template-columns: 1fr; }
+    header { min-height: 60vh; }
+    .banner h1 { font-size: clamp(35px, 8vw, 50px); }
+}

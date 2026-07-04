@@ -56,6 +56,26 @@
 
 <body data-spy="scroll" data-target="#navbar-menu" data-offset="100">
 
+    <div id="location-overlay" class="miami-choice-overlay">
+        <div class="overlay-card">
+            <img src="images/logo-crousty.png" alt="Miami Crousty" class="overlay-logo">
+            <h2 class="overlay-title">Bienvenue chez Miami Crousty</h2>
+            <p class="overlay-subtitle">Veuillez sélectionner votre restaurant pour commander :</p>
+            
+            <div class="overlay-grid">
+                <button onclick="choisirLocalisation('leguevin')" class="btn-location btn-leguevin">
+                    LÉGUEVIN <br>
+                    <span>15 Route de Toulouse</span>
+                </button>
+                
+                <button onclick="choisirLocalisation('aucamville')" class="btn-location btn-aucamville">
+                    AUCAMVILLE <br>
+                    <span>12 Rte de Fronton</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
    <div id="game-popup-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:999999; justify-content:center; align-items:center; backdrop-filter: blur(8px); background: rgba(0,0,0,0.5); padding: 15px;">
         <div style="position:relative; width:100%; max-width:400px; height:85vh; max-height:650px; border-radius: 20px;">
             
@@ -96,6 +116,14 @@
                 <a class="navbar-brand" href="#" style="float:none; display:inline-block;">
                     <img src="images/logo-crousty.png" class="logo" alt="Miami Crousty">
                 </a>
+                <div>
+                    <div class="local-switcher">
+                        <a href="javascript:void(0)" onclick="redemanderLocalisation()">
+                            <i class="fa fa-map-marker"></i> Changer de restaurant
+                        </a>
+                        <span>(Actif : <span id="nav-ville-active">Léguevin</span>)</span>
+                    </div>
+                </div>
             </div>
         </div>   
     </nav>
@@ -111,8 +139,13 @@
                         <div class="banner_content">
                             <p>Bienvenue chez <strong>Miami Crousty</strong> ! Découvrez une fusion unique : des Burgers gourmets, des Wraps généreux, et le meilleur de la cuisine Indienne authentique. Sans oublier nos célèbres Riz Crousty et Poke Bowls frais.</p>
                             <p>*Certifié HALAL - Ingrédients frais et saveurs intenses.</p>
-                            <div class="info_btn_shadow">
-                                <a class="info_btn" data-glf-cuid="509c1e56-dd64-46bb-9a3f-b8b0ad9dfd25" data-glf-ruid="a43f6dc3-8cbd-491f-aeb2-99973693658c"">COMMANDER EN LIGNE</a>
+                            
+                            <div class="info_btn_shadow" id="wrapper-btn-leguevin" style="display: block;">
+                                <a id="glf-btn-leguevin" class="info_btn" data-glf-cuid="509c1e56-dd64-46bb-9a3f-b8b0ad9dfd25" data-glf-ruid="a43f6dc3-8cbd-491f-aeb2-99973693658c">COMMANDER EN LIGNE</a>
+                            </div>
+
+                            <div class="info_btn_shadow" id="wrapper-btn-aucamville" style="display: none;">
+                                <a id="glf-btn-aucamville" class="info_btn" data-glf-cuid="7afd3783-87a4-478d-b446-f8d8ee56bbe0" data-glf-ruid="edd86683-8c66-47b8-8870-b793bd639c0a">COMMANDER EN LIGNE</a>
                             </div>
                         </div>
                     </div>
@@ -120,7 +153,7 @@
             </div>
         </div>
     </div>
-    <p class="caption">*Ouvert 7j/7 - Vibes de Miami à Leguevin</p>
+    <p class="caption" id="hero-caption">*Ouvert 7j/7 - Vibes de Miami à Leguevin</p>
 </header>
 
 <div class="miami-marquee-wrapper">
@@ -176,20 +209,19 @@
         </div>
     </div>
 </section>
+
 <section id="lock" class="miami-spot-section">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <!-- <img src="images/logo-crousty.png" alt="Logo Miami Crousty" class="logo-spot"> -->
-
                 <div class="lock-content">
-                    <h2 class="neon-text-blue">VOTRE SPOT BURGER & INDIEN À LEGUEVIN</h2>
+                    <h2 class="neon-text-blue" id="spot-title">VOTRE SPOT BURGER & INDIEN À LEGUEVIN</h2>
                     <div class="divider"></div>
-                    <p>L'ambiance de South Beach débarque à Leguevin. <br> 
+                    <p>L'ambiance de South Beach débarque chez vous. <br> 
                     Des produits frais, des recettes maison et une fusion de saveurs unique au monde.</p>
                     
                     <div class="spot-badges">
-                        <span><i class="fa fa-map-marker"></i> 15 Route de Toulouse</span>
+                        <span id="spot-address"><i class="fa fa-map-marker"></i> 15 Route de Toulouse</span>
                         <span><i class="fa fa-clock-o"></i> Ouvert 7j/7</span>
                     </div>
 
@@ -203,7 +235,7 @@
 </section>
 
 <div id="ourmaps" style="width: 100%; height: 450px;">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.309063717145!2d1.232535!3d43.599026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebb160a000001%3A0x58df059d3e510823!2s15%20Rte%20de%20Toulouse%2C%2031490%20Léguevin!5e0!3m2!1sfr!2sfr!4v1711234567890!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe id="map-iframe" src="http://googleusercontent.com/maps.google.com/9" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 <footer>
@@ -229,7 +261,7 @@
                 <div class="contact_us">
                     <h4>Contact</h4>
                     <a href="mailto:info@3kitchenfood.com">info@3kitchenfood.com</a>
-                    <address>
+                    <address id="footer-address">
                         15 route de Toulouse<br />
                         LEGUEVIN - 31490<br />
                         Téléphone : 05 61 86 44 90<br />
@@ -260,104 +292,97 @@
 <script src="js/main.js"></script>
 <script src="https://www.fbgcdn.com/embedder/js/ewm2.js" defer async ></script>
 
-
 <script>
-    // --- CONFIGURATION DU RESTAURANT MIAMI CROUSTY ---
     const saasConfig = {
         name: "Miami Crousty",
         logo: "https://3kitchenfood.com/images/logo-crousty.png",
         google: "https://g.page/r/CRMuK3aVW99YEAE/review",
-       
     };
 
-    // Fonction pour ouvrir le jeu
     function openGamePopup() {
         const overlay = document.getElementById('game-popup-overlay');
         const iframe = document.getElementById('game-iframe-saas');
-        
-        // On construit l'URL avec les paramètres 
         const params = new URLSearchParams(saasConfig);
-        // iframe.src = `https://seriogame.netlify.app/?${params.toString()}`;
         iframe.src = `https://sashimipinko.netlify.app/?${params.toString()}`;
-        
         overlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Bloque le scroll du site
+        document.body.style.overflow = 'hidden'; 
     }
 
-    // Fonction pour fermer proprement
     function closeGamePopup() {
         const overlay = document.getElementById('game-popup-overlay');
         const iframe = document.getElementById('game-iframe-saas');
-        
         overlay.style.display = 'none';
-        iframe.src = ''; // Stop le jeu et les sons
-        document.body.style.overflow = ''; // Réactive le scroll
+        iframe.src = ''; 
+        document.body.style.overflow = ''; 
     }
 
-    // --- ECOUTEUR DE MESSAGES (Le secret du SaaS) ---
-    // Cette partie reçoit le signal "closeGame" envoyé par ton code Netlify
     window.addEventListener('message', function(event) {
-        // Optionnel : vérifie que le message vient bien de ton Netlify
-        // if (event.origin !== "https://seriogame.netlify.app") return;
-
         if (event.data === 'closeGame') {
-            console.log("Signal de fermeture reçu du SaaS");
             closeGamePopup();
         }
     });
-
-    // --- LANCEMENT AUTOMATIQUE ---
-      // Lance le jeu après 5 secondes (meilleur pour la conversion)
-    // document.addEventListener('DOMContentLoaded', function() {
-    
-    //     setTimeout(openGamePopup, 5000);
-    // });
 </script>
-<style>
-    .whatsapp-widget {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        transition: transform 0.3s ease;
-    }
-    .whatsapp-widget:hover {
-        transform: scale(1.1);
-    }
-    .wa-label {
-        background: #e720cf; /* Le rose de ton bouton "Jouez et Gagnez" */
-        color: white;
-        padding: 8px 15px;
-        border-radius: 20px 5px 5px 20px;
-        margin-right: -10px;
-        font-weight: bold;
-        font-family: sans-serif;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .wa-icon {
-        width: 60px;
-        height: 60px;
-        background: #25d366;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        border: 2px solid #fff;
-    }
-    .wa-icon img {
-        width: 35px;
-        height: 35px;
-    }
-    @media (max-width: 768px) {
-        .wa-label { display: none; } /* On cache le texte sur mobile pour plus de place */
-    }
-</style>
 
-<a href="https://wa.me/33758262402?text=Bonjour%20Miami%20Crousty%20!%20Je%20souhaite%20commander." class="whatsapp-widget" target="_blank">
+<script>
+    function choisirLocalisation(ville) {
+        document.getElementById('location-overlay').style.display = 'none';
+        document.body.style.overflow = '';
+
+        const btnLeguevin = document.getElementById('wrapper-btn-leguevin');
+        const btnAucamville = document.getElementById('wrapper-btn-aucamville');
+        const heroCaption = document.getElementById('hero-caption');
+        const spotTitle = document.getElementById('spot-title');
+        const spotAddress = document.getElementById('spot-address');
+        const footerAddress = document.getElementById('footer-address');
+        const mapIframe = document.getElementById('map-iframe');
+        const whatsappBtn = document.getElementById('whatsapp-btn');
+        const navVilleActive = document.getElementById('nav-ville-active');
+
+        if (ville === 'leguevin') {
+            btnLeguevin.style.display = 'block';
+            btnAucamville.style.display = 'none';
+            
+            navVilleActive.textContent = "Léguevin";
+            heroCaption.textContent = "*Ouvert 7j/7 - Vibes de Miami à Leguevin";
+            spotTitle.textContent = "VOTRE SPOT BURGER & INDIEN À LEGUEVIN";
+            spotAddress.innerHTML = '<i class="fa fa-map-marker"></i> 15 Route de Toulouse';
+            footerAddress.innerHTML = '15 route de Toulouse<br />LEGUEVIN - 31490<br />Téléphone : 05 61 86 44 90<br />';
+            mapIframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.31753733075!2d1.2323415!3d43.60098410";
+            whatsappBtn.href = "https://wa.me/33758262402?text=Bonjour%20Miami%20Crousty%20L%C3%A9guevin%20!%20Je%20souhaite%20commander.";
+            
+            setTimeout(function() {
+                document.getElementById('glf-btn-leguevin').click();
+            }, 500);
+        } 
+        else if (ville === 'aucamville') {
+            btnLeguevin.style.display = 'none';
+            btnAucamville.style.display = 'block';
+            
+            navVilleActive.textContent = "Aucamville";
+            heroCaption.textContent = "*Ouvert 7j/7 - Vibes de Miami à Aucamville";
+            spotTitle.textContent = "VOTRE SPOT BURGER & INDIEN À AUCAMVILLE";
+            spotAddress.innerHTML = '<i class="fa fa-map-marker"></i> 12 Rte de Fronton';
+            footerAddress.innerHTML = '12 Rte de Fronton<br />AUCAMVILLE - 31140<br />Téléphone : 06 05 65 77 55<br />'; 
+            mapIframe.src = "https://maps.google.com/maps?q=15%20route%20de%20Toulouse,%20Leguevin&t=&z=15&ie=UTF8&iwloc=&output=embed";
+            whatsappBtn.href = "https://wa.me/33605657755?text=Bonjour%20Miami%20Crousty%20Aucamville%20!%20Je%20souhaite%20commander."; 
+            
+            setTimeout(function() {
+                document.getElementById('glf-btn-aucamville').click();
+            }, 500);
+        }
+    }
+
+    function redemanderLocalisation() {
+        document.getElementById('location-overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.body.style.overflow = 'hidden';
+    });
+</script>
+
+<a id="whatsapp-btn" href="https://wa.me/33758262402?text=Bonjour%20Miami%20Crousty%20!%20Je%20souhaite%20commander." class="whatsapp-widget" target="_blank">
     <div class="wa-label">Commander par WhatsApp</div>
     <div class="wa-icon">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
