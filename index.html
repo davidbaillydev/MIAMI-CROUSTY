@@ -141,11 +141,11 @@
                             <p>*Certifié HALAL - Ingrédients frais et saveurs intenses.</p>
                             
                             <div class="info_btn_shadow" id="wrapper-btn-leguevin" style="display: block;">
-                                <a id="glf-btn-leguevin" class="info_btn" data-glf-cuid="509c1e56-dd64-46bb-9a3f-b8b0ad9dfd25" data-glf-ruid="a43f6dc3-8cbd-491f-aeb2-99973693658c">COMMANDER EN LIGNE</a>
+                                <a class="info_btn" href="https://restaurant.lcdigitale.fr/https-miamicrousty-com?src=link" target="_blank" rel="noopener">COMMANDER EN LIGNE</a>
                             </div>
 
                             <div class="info_btn_shadow" id="wrapper-btn-aucamville" style="display: none;">
-                                <a id="glf-btn-aucamville" class="info_btn" data-glf-cuid="7afd3783-87a4-478d-b446-f8d8ee56bbe0" data-glf-ruid="edd86683-8c66-47b8-8870-b793bd639c0a">COMMANDER EN LIGNE</a>
+                                <a class="info_btn" href="https://restaurant.lcdigitale.fr/miamicrousty?src=link" target="_blank" rel="noopener">COMMANDER EN LIGNE</a>
                             </div>
                         </div>
                     </div>
@@ -290,7 +290,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="js/bootsnav.js"></script>
 <script src="js/main.js"></script>
-<script src="https://www.fbgcdn.com/embedder/js/ewm2.js" defer async ></script>
 
 <script>
     const saasConfig = {
@@ -357,9 +356,6 @@
         // Modification des balises Open Graph (pour les partages réseaux/WhatsApp)
         document.querySelector('meta[property="og:title"]').setAttribute("content", "MIAMI CROUSTY - L'expérience Fast-Good à Leguevin");
         document.querySelector('meta[property="og:description"]').setAttribute("content", "Burgers, Plats Indiens, Poke Bowls et Wraps. Le goût de Miami à Leguevin !");
-            setTimeout(function() {
-                document.getElementById('glf-btn-leguevin').click();
-            }, 500);
         } 
         else if (ville === 'aucamville') {
             btnLeguevin.style.display = 'none';
@@ -378,9 +374,6 @@
         // Modification des balises Open Graph (pour les partages réseaux/WhatsApp)
         document.querySelector('meta[property="og:title"]').setAttribute("content", "MIAMI CROUSTY - L'expérience Fast-Good à Aucamville");
         document.querySelector('meta[property="og:description"]').setAttribute("content", "Burgers, Tacos Crêpes, Wraps et Riz Crousty. Le goût de Miami à Aucamville !");
-            setTimeout(function() {
-                document.getElementById('glf-btn-aucamville').click();
-            }, 500);
         }
     }
 
